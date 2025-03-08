@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 
-const API_URL = process.env.REACT_APP_API_URL || "https://your-backend.onrender.com";
+const API_URL = "http://localhost:5000" || "https://your-backend.onrender.com";
 
 const TaskForm = ({ onTaskAdded }) => {
   const [title, setTitle] = useState("");
@@ -13,29 +13,43 @@ const TaskForm = ({ onTaskAdded }) => {
 
     try {
       await axios.post(`${API_URL}/tasks`, { title, priority });
-      setTitle(""); // Clear input after adding
-      onTaskAdded(); // ✅ Fetch updated tasks
+      setTitle("");
+      onTaskAdded();
     } catch (error) {
-      console.error("Error adding task:", error);
+      console.error("❌ Error adding task:", error);
     }
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <input
-        type="text"
-        placeholder="Enter task title"
-        value={title}
-        onChange={(e) => setTitle(e.target.value)}
-        required
-      />
-      <select value={priority} onChange={(e) => setPriority(e.target.value)}>
-        <option value="High">High Priority</option>
-        <option value="Medium">Medium Priority</option>
-        <option value="Low">Low Priority</option>
-      </select>
-      <button type="submit">Add Task</button>
-    </form>
+    <div className="container mt-4">
+      <h2 className="text-center">Add a Task</h2>
+      <form onSubmit={handleSubmit} className="p-3 shadow bg-white rounded">
+        <div className="mb-3">
+          <input
+            type="text"
+            className="form-control"
+            placeholder="Enter task title"
+            value={title}
+            onChange={(e) => setTitle(e.target.value)}
+            required
+          />
+        </div>
+
+        <div className="mb-3">
+          <select 
+            className="form-select"
+            value={priority} 
+            onChange={(e) => setPriority(e.target.value)}
+          >
+            <option value="High">High Priority</option>
+            <option value="Medium">Medium Priority</option>
+            <option value="Low">Low Priority</option>
+          </select>
+        </div>
+
+        <button type="submit" className="btn btn-primary w-100">Add Task</button>
+      </form>
+    </div>
   );
 };
 
