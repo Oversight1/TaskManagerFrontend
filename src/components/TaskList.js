@@ -28,6 +28,7 @@ const handleTaskAdded = async () => {
     console.error("Error fetching updated tasks:", error);
   }
 };
+    
   const toggleTaskCompletion = (id) => {
     const task = tasks.find(task => task._id === id);
     if (!task) return;
