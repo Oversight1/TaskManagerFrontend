@@ -1,8 +1,9 @@
 import React, { useState } from "react";
 import axios from "axios";
 
-const API_URL = "http://localhost:5000" || "https://taskmanager-sbj4.onrender.com";
-
+//API connection between the frontend-backend
+const API_URL = "https://taskmanager-sbj4.onrender.com";
+//"http://localhost:5000"
 const TaskForm = ({ onTaskAdded }) => {
   const [title, setTitle] = useState("");
   const [priority, setPriority] = useState("Medium");
