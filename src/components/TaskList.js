@@ -2,7 +2,8 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import TaskForm from "./TaskForm";
 
-const API_URL = process.env.REACT_APP_API_URL || "http://localhost:5000"; 
+const API_URL = process.env.REACT_APP_API_URL; 
+//"http://localhost:5000"
 
 
 const TaskList = () => {
