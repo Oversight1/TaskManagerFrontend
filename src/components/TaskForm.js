@@ -7,14 +7,16 @@ const API_URL = "https://taskmanager-sbj4.onrender.com";
 const TaskForm = ({ onTaskAdded }) => {
   const [title, setTitle] = useState("");
   const [priority, setPriority] = useState("Medium");
+  const [dueDate, setDueDate] = useState("");
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (!title.trim()) return;
 
     try {
-      await axios.post(`${API_URL}/tasks`, { title, priority });
+      await axios.post(`${API_URL}/tasks`, { title, priority, dueDate });
       setTitle("");
+      setDueDate(""); //Clears the input
       onTaskAdded();
     } catch (error) {
       console.error("❌ Error adding task:", error);
@@ -46,6 +48,11 @@ const TaskForm = ({ onTaskAdded }) => {
             <option value="Medium">Medium Priority</option>
             <option value="Low">Low Priority</option>
           </select>
+          <input
+            type = "date"
+            value = {dueDate}
+            onChange = {(e) => setDueDate(e.target.value)}
+          />
         </div>
 
         <button type="submit" className="btn btn-primary w-100">Add Task</button>
