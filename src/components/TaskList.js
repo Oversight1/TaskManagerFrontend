@@ -204,6 +204,6 @@ return (
     </div>
   </div>
 );
-
+};
 
 export default TaskList;
