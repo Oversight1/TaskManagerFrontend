@@ -64,7 +64,7 @@ const handleTaskAdded = async () => {
       title: { type: String, required: true },
       priority: { type: String, enum: ["High", "Medium", "Low"], required: true },
       completed: { type: Boolean, default: false },
-      dueDate: { type: Date, required: true } // ✅ New dueDate field
+      dueDate: { type: Date, required: true }, // ✅ New dueDate field
   });
 
 //  return (
@@ -184,7 +184,8 @@ return (
                   <strong>Priority:</strong> {task.priority}
                 </p>
                     <p className="card-text">
-                      <strong>Due Date:</strong> {task.dueDate ? new Date(task.dueDate).toLocaleDateString() : "No Due Date"}
+                      <strong>Due Date:</strong> 
+                      {task.dueDate ? new Date(task.dueDate).toLocaleDateString() : "No Due Date"}
                     </p>
                 <div className="d-flex justify-content-between">
                   <button 

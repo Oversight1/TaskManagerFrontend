@@ -2,7 +2,8 @@ import React, { useState } from "react";
 import axios from "axios";
 
 //API connection between the frontend-backend
-const API_URL = "https://taskmanager-sbj4.onrender.com" || "https://task-manager-frontend-pied-one.vercel.app";
+const API_URL = "https://task-manager-frontend-pied-one.vercel.app";
+//"https://taskmanager-sbj4.onrender.com" 
 //"http://localhost:5000"
 const TaskForm = ({ onTaskAdded }) => {
   const [title, setTitle] = useState("");
@@ -48,11 +49,6 @@ const TaskForm = ({ onTaskAdded }) => {
             <option value="Medium">Medium Priority</option>
             <option value="Low">Low Priority</option>
           </select>
-//          <input
-//            type = "date"
-//            value = {dueDate}
-//            onChange = {(e) => setDueDate(e.target.value)}
-//          />
             <input
               type="date"
               value={dueDate}
@@ -68,3 +64,10 @@ const TaskForm = ({ onTaskAdded }) => {
 };
 
 export default TaskForm;
+
+
+//          <input
+//            type = "date"
+//            value = {dueDate}
+//            onChange = {(e) => setDueDate(e.target.value)}
+//          />
