@@ -64,7 +64,7 @@ const handleTaskAdded = async () => {
       title: { type: String, required: true },
       priority: { type: String, enum: ["High", "Medium", "Low"], required: true },
       completed: { type: Boolean, default: false },
-      dueDate: { type: Date } // ✅ New dueDate field
+      dueDate: { type: Date, required: true } // ✅ New dueDate field
   });
 
 //  return (
@@ -123,6 +123,9 @@ const handleTaskAdded = async () => {
 //    </div>
 //  );
 //};
+//                <p className={`card-text ${dueColor}`}>
+//                  <strong>{dueText}</strong>
+//                </p>
 return (
   <div className="container mt-4">
     <h2 className="text-center">Task List</h2>
@@ -180,9 +183,9 @@ return (
                 <p className="card-text">
                   <strong>Priority:</strong> {task.priority}
                 </p>
-                <p className={`card-text ${dueColor}`}>
-                  <strong>{dueText}</strong>
-                </p>
+                    <p className="card-text">
+                      <strong>Due Date:</strong> {task.dueDate ? new Date(task.dueDate).toLocaleDateString() : "No Due Date"}
+                    </p>
                 <div className="d-flex justify-content-between">
                   <button 
                     className={`btn ${task.completed ? "btn-secondary" : "btn-success"}`} 
@@ -208,3 +211,8 @@ return (
 };
 
 export default TaskList;
+
+
+
+
+

@@ -48,11 +48,17 @@ const TaskForm = ({ onTaskAdded }) => {
             <option value="Medium">Medium Priority</option>
             <option value="Low">Low Priority</option>
           </select>
-          <input
-            type = "date"
-            value = {dueDate}
-            onChange = {(e) => setDueDate(e.target.value)}
-          />
+//          <input
+//            type = "date"
+//            value = {dueDate}
+//            onChange = {(e) => setDueDate(e.target.value)}
+//          />
+            <input
+              type="date"
+              value={dueDate}
+              onChange={(e) => setDueDate(e.target.value)}
+              required // Fixing data issue not displaying 
+            />
         </div>
 
         <button type="submit" className="btn btn-primary w-100">Add Task</button>
