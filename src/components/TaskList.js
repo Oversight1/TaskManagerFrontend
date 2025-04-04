@@ -21,14 +21,28 @@ const TaskList = () => {
       .catch(error => console.error("Error fetching tasks:", error));
   };
 
-const handleTaskAdded = async () => {
-  try {
-    const response = await axios.get(`${API_URL}/tasks`); // Fetch updated task list
-    setTasks(response.data); // Update UI with new tasks
-  } catch (error) {
-    console.error("Error fetching updated tasks:", error);
-  }
-};
+    const handleTaskAdded = async () => {
+      try {
+        const response = await axios.get(`${API_URL}/tasks`); // Fetch updated task list
+        setTasks(response.data); // Update UI with new tasks
+      } catch (error) {
+        console.error("Error fetching updated tasks:", error);
+      }
+    };
+    
+    
+    const fetchAISuggestion = async () => {
+      try {
+        const response = await fetch("/ai-suggestion");
+        const data = await response.json();
+
+        // Display the suggestion in the UI
+        const suggestionBox = document.getElementById("ai-suggestion-box");
+        suggestionBox.innerText = data.suggestion || "No suggestions yet.";
+      } catch (error) {
+        console.error("Failed to fetch AI suggestion:", error);
+      }
+    };
     
   const toggleTaskCompletion = (id) => {
     const task = tasks.find(task => task._id === id);
