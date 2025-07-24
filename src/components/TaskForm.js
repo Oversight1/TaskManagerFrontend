@@ -2,8 +2,7 @@ import React, { useState } from "react";
 import axios from "axios";
 
 //API connection between the frontend-backend
-const API_URL = "https://task-manager-frontend-pied-one.vercel.app";
-//"https://taskmanager-sbj4.onrender.com" 
+const API_URL = "https://taskmanager-sbj4.onrender.com";
 //"http://localhost:5000"
 const TaskForm = ({ onTaskAdded }) => {
   const [title, setTitle] = useState("");
